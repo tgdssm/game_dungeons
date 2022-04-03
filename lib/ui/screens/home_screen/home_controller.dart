@@ -1,16 +1,14 @@
-import 'package:dungeons_and_dragons/data/models/player_class.dart';
 import 'package:dungeons_and_dragons/data/providers/api_requests.dart';
 import 'package:dungeons_and_dragons/ui/utils/globals.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeController {
-
   bool isLoading = true;
   ValueNotifier<int> selectedClasses = ValueNotifier(0);
   final scrollController = ScrollController();
 
   HomeController._internal();
-  static final  _singletonHomeController = HomeController._internal();
+  static final _singletonHomeController = HomeController._internal();
   factory HomeController() => _singletonHomeController;
 
   Future<void> readClasses() async {
@@ -19,7 +17,7 @@ class HomeController {
   }
 
   String nameClass(int index) {
-    switch(index) {
+    switch (index) {
       case 0:
         return 'Desenvolvedor';
       case 1:

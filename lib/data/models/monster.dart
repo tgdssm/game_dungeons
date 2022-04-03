@@ -3,7 +3,7 @@ import 'package:dungeons_and_dragons/data/models/level_enum.dart';
 class Monster {
   final String name;
   final int atk;
-  final int hp;
+  int hp;
   final Level level;
 
   Monster(
