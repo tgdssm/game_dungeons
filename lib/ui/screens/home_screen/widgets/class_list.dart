@@ -38,11 +38,11 @@ class _ClassListState extends State<ClassList> {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.grey,
                   image: DecorationImage(
-                    image: AssetImage('assets/chars/char${index + 1}.png')
+                    image: AssetImage(_controller.classes[index].image)
                   )
                 ),
               ),
-              Text(_controller.nameClass(index),
+              Text(_controller.classes[index].office,
                   style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400)),
               // Row(
               //   children: [

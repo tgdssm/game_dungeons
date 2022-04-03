@@ -15,7 +15,7 @@ class APIRequests {
     if(response.statusCode == 200) {
       try {
         response.data['results'].forEach((pClass) {
-          classes.add(PlayerClass.fromJson(pClass as Map<String, dynamic>));
+          classes.add(PlayerClass.fromJson(baseClasses.firstWhere((element) => element['class'] == pClass['index'])));
         });
       } catch(_)  {}
     }
