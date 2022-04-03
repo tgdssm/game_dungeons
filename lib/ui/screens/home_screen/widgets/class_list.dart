@@ -1,3 +1,4 @@
+import 'package:dungeons_and_dragons/ui/utils/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../home_controller.dart';
@@ -15,18 +16,19 @@ class _ClassListState extends State<ClassList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: _controller.classes.length,
+      itemCount: globalClasses.length,
       scrollDirection: Axis.horizontal,
       controller: _controller.scrollController,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: (){
-            _controller.classes[index].selected = !_controller.classes[index].selected;
-            if(_controller.classes[index].selected) {
+            globalClasses[index].selected = !globalClasses[index].selected;
+            if(globalClasses[index].selected) {
               _controller.selectedClasses.value++;
             } else {
               _controller.selectedClasses.value--;
             }
+            setState(() {});
           },
           child: Column(
             children: [
@@ -36,23 +38,23 @@ class _ClassListState extends State<ClassList> {
                 margin: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
+                  color: globalClasses[index].selected ? PRIMARY_COLOR : Colors.grey,
                   image: DecorationImage(
-                    image: AssetImage(_controller.classes[index].image)
+                    image: AssetImage(globalClasses[index].image)
                   )
                 ),
               ),
-              Text(_controller.classes[index].office,
+              Text(globalClasses[index].office,
                   style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400)),
-              // Row(
-              //   children: [
-              //     Text("ATK: ${_controller.nameClass(index)}",
-              //         style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w400)),
-              //     Text("HP: ${_controller.nameClass(index)}",
-              //         style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w400)),
-              //
-              //   ],
-              // )
+              Row(
+                children: [
+                  Text("ATK: ${globalClasses[index].atk}",
+                      style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400)),
+                  const SizedBox(width: 15,),
+                  Text("HP: ${globalClasses[index].hp}",
+                      style: GoogleFonts.yanoneKaffeesatz(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400)),
+                ],
+              )
             ],
           ),
         );

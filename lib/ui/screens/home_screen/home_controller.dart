@@ -1,10 +1,10 @@
 import 'package:dungeons_and_dragons/data/models/player_class.dart';
 import 'package:dungeons_and_dragons/data/providers/api_requests.dart';
+import 'package:dungeons_and_dragons/ui/utils/globals.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeController {
 
-  List<PlayerClass> classes = [];
   bool isLoading = true;
   ValueNotifier<int> selectedClasses = ValueNotifier(0);
   final scrollController = ScrollController();
@@ -14,7 +14,7 @@ class HomeController {
   factory HomeController() => _singletonHomeController;
 
   Future<void> readClasses() async {
-    classes = await APIRequests.getClasses();
+    globalClasses = await APIRequests.getClasses();
     isLoading = false;
   }
 

@@ -1,5 +1,3 @@
-import 'package:dungeons_and_dragons/ui/utils/globals.dart';
-
 class PlayerClass {
   late String pClass;
   late String name;

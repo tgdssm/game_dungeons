@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/player_class.dart';
+
 const PRIMARY_COLOR = Color(0xffA34A9B);
 
 List<Map<String, dynamic>> baseClasses  = [
@@ -77,10 +79,6 @@ List<Map<String, dynamic>> baseClasses  = [
   },
 ];
 
+List<PlayerClass> globalClasses = [];
 
-final result = [{"index": "barbarian"}];
 
-
-// final classes = result.map<PlayerClass>((e) {
-//
-// });

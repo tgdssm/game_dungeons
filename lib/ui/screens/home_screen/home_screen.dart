@@ -1,3 +1,4 @@
+import 'package:dungeons_and_dragons/ui/screens/game_screen/game_screen.dart';
 import 'package:dungeons_and_dragons/ui/screens/home_screen/home_controller.dart';
 import 'package:dungeons_and_dragons/ui/screens/home_screen/widgets/class_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,7 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               height: 130,
@@ -106,16 +106,28 @@ class _HomeScreenState extends State<HomeScreen> {
             if(_controller.isLoading)
               const Expanded(child: Center(child: CircularProgressIndicator(),))
             else
-              const SizedBox(
-                height: 350,
-                child: ClassList(),
+              Container(
+                alignment: Alignment.center,
+                height: 250,
+                child: const ClassList(),
               ),
-            // Container(
-            //   child: MaterialButton(
-            //     onPressed: (){},
-            //     child: Text('Continuar'),
-            //   )
-            // )
+            const SizedBox(height: 30,),
+            MaterialButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const GameScreen()));
+            },
+              child:  Container(
+                alignment: Alignment.center,
+                child: Text('Continuar',
+                    style: GoogleFonts.yanoneKaffeesatz(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w200)),
+                width: 220,
+                height: 60,
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+              ),
+              color: PRIMARY_COLOR,
+            ),
+            const SizedBox(height: 30,),
           ],
         ),
       ),
